@@ -1,0 +1,280 @@
+/* ── BASE STYLING & CORE COSMIC THEME ── */
+:root {
+  --space-bg: #03080f;
+  --panel-bg: #06111c;
+  --border-glow: #12283d;
+  --gold-text: #e0d4b0;
+  --gold-dim: #a69c7c;
+  --font-serif: 'Cinzel', serif;
+  --font-body: 'Inter', sans-serif;
+  --font-italic: 'Crimson Pro', serif;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: var(--space-bg);
+  color: #f0f4f8;
+  font-family: var(--font-body);
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  min-height: 100vh;
+  overflow-x: hidden;
+  padding: 12px;
+}
+
+/* App Layout Container */
+#app-container {
+  width: 100%;
+  max-width: 840px;
+  background-color: var(--panel-bg);
+  border: 1px solid var(--border-glow);
+  border-radius: 12px;
+  padding: 16px;
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.6);
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+/* Header Adjustments */
+#map-header {
+  text-align: center;
+  border-bottom: 1px solid rgba(18, 40, 61, 0.5);
+  padding-bottom: 10px;
+}
+
+#hdr-main {
+  font-family: var(--font-serif);
+  font-size: 1.6rem;
+  color: var(--gold-text);
+  letter-spacing: 1px;
+}
+
+#hdr-sub {
+  font-size: 0.85rem;
+  color: var(--gold-dim);
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  margin-top: 2px;
+}
+
+/* ── INTERACTIVE DROPDOWNS (STANDALONE MODE) ── */
+#form-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  background: rgba(3, 8, 15, 0.6);
+  padding: 12px;
+  border-radius: 8px;
+  border: 1px solid rgba(18, 40, 61, 0.4);
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+}
+
+@media (min-width: 580px) {
+  .form-row {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.field-group {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.field-group label {
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: var(--gold-dim);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.field-group select {
+  background-color: #091724;
+  color: #fff;
+  border: 1px solid var(--border-glow);
+  padding: 8px;
+  border-radius: 6px;
+  font-size: 0.85rem;
+  font-family: var(--font-body);
+  outline: none;
+  cursor: pointer;
+  transition: border-color 0.2s;
+}
+
+.field-group select:focus {
+  border-color: var(--gold-dim);
+}
+
+#calc-btn {
+  background: linear-gradient(135deg, #16324d 0%, #0c1e30 100%);
+  color: var(--gold-text);
+  border: 1px solid rgba(224, 212, 176, 0.3);
+  padding: 10px;
+  border-radius: 6px;
+  font-family: var(--font-serif);
+  font-size: 0.9rem;
+  cursor: pointer;
+  letter-spacing: 0.5px;
+  transition: all 0.2s;
+}
+
+#calc-btn:hover:not(:disabled) {
+  border-color: var(--gold-text);
+  box-shadow: 0 0 10px rgba(224, 212, 176, 0.15);
+}
+
+#calc-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* ── MAP VIEWPORT ── */
+#map-wrap {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 800 / 480;
+  background-color: #06101a;
+  border-radius: 8px;
+  border: 1px solid var(--border-glow);
+  overflow: hidden;
+}
+
+#map {
+  width: 100%;
+  height: 100%;
+}
+
+#map-loading {
+  position: absolute;
+  top: 0; left: 0; width: 100%; height: 100%;
+  background: var(--space-bg);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: var(--font-serif);
+  color: var(--gold-dim);
+  font-size: 0.95rem;
+  z-index: 10;
+  letter-spacing: 1px;
+}
+
+/* SVG Map Adjustments */
+svg text {
+  user-select: none;
+  pointer-events: none;
+}
+
+/* ── MAP HOVER TOOLTIP ── */
+.astro-tooltip {
+  position: absolute;
+  background: rgba(3, 8, 15, 0.92);
+  border: 1px solid var(--gold-dim);
+  padding: 8px 12px;
+  border-radius: 6px;
+  pointer-events: none;
+  z-index: 100;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.8);
+  min-width: 120px;
+  font-family: var(--font-body);
+}
+
+.tt-title {
+  font-family: var(--font-serif);
+  color: var(--gold-text);
+  font-size: 0.85rem;
+  margin-bottom: 2px;
+}
+
+.tt-vibe-tag {
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.tt-astrologer-note {
+  font-family: var(--font-italic);
+  font-style: italic;
+  font-size: 0.75rem;
+  color: #8fa0b0;
+  margin-top: 3px;
+  border-top: 1px solid rgba(255,255,255,0.08);
+  padding-top: 3px;
+}
+
+/* ── BOTTOM HORIZONTAL CITY PILLS ── */
+#strip-wrap {
+  width: 100%;
+  overflow-x: auto;
+  padding-bottom: 4px;
+}
+
+#strip-wrap::-webkit-scrollbar {
+  height: 4px;
+}
+#strip-wrap::-webkit-scrollbar-thumb {
+  background: var(--border-glow);
+  border-radius: 2px;
+}
+
+#city-strip {
+  display: flex;
+  gap: 8px;
+  width: max-content;
+}
+
+.city-pill {
+  background: rgba(9, 23, 36, 0.7);
+  border: 1px solid var(--border-glow);
+  padding: 6px 12px;
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 90px;
+}
+
+.cp-name {
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: #fff;
+}
+
+.cp-vibe {
+  font-size: 0.65rem;
+  font-family: var(--font-italic);
+  font-style: italic;
+  margin-top: 1px;
+}
+
+/* ──────────────────────────────────────────────
+   GLIDE EMBED MODE (Cleans interface inside Glide)
+────────────────────────────────────────────── */
+body.glide-mode {
+  padding: 0;
+  background-color: transparent;
+}
+
+#app-container.glide-mode {
+  border: none;
+  padding: 0;
+  box-shadow: none;
+  background-color: transparent;
+}
+
+#form-panel.glide-mode {
+  display: none !important; /* Hides selectors completely */
+}
