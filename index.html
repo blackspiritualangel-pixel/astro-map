@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AstroCarto — Cosmic Hotspots</title>
+  
+  <!-- Premium Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Crimson+Pro:ital,wght@0,400;0,600;1,400&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+  
+  <!-- Custom Styling Link -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- App Wrapper Container -->
+  <div id="app-container">
+    
+    <!-- Header Banner Panel -->
+    <header id="map-header">
+      <h1 id="hdr-main">Cosmic Hotspots ✦</h1>
+      <p id="hdr-sub">Discover your ideal astro-localities</p>
+    </header>
+
+    <!-- Standalone Setup Panel (Automatically hidden in Glide embed mode) -->
+    <section id="form-panel" aria-label="Birth Chart Details">
+      <div class="form-row">
+        <div class="field-group">
+          <label for="sun">Sun Sign</label>
+          <select id="sun">
+            <option value="Aries">Aries</option>
+            <option value="Taurus">Taurus</option>
+            <option value="Gemini">Gemini</option>
+            <option value="Cancer">Cancer</option>
+            <option value="Leo" selected>Leo</option>
+            <option value="Virgo">Virgo</option>
+            <option value="Libra">Libra</option>
+            <option value="Scorpio">Scorpio</option>
+            <option value="Sagittarius">Sagittarius</option>
+            <option value="Capricorn">Capricorn</option>
+            <option value="Aquarius">Aquarius</option>
+            <option value="Pisces">Pisces</option>
+          </select>
+        </div>
+        <div class="field-group">
+          <label for="rising">Rising Sign</label>
+          <select id="rising">
+            <option value="Aries">Aries</option>
+            <option value="Taurus">Taurus</option>
+            <option value="Gemini">Gemini</option>
+            <option value="Cancer">Cancer</option>
+            <option value="Leo">Leo</option>
+            <option value="Virgo">Virgo</option>
+            <option value="Libra">Libra</option>
+            <option value="Scorpio" selected>Scorpio</option>
+            <option value="Sagittarius">Sagittarius</option>
+            <option value="Capricorn">Capricorn</option>
+            <option value="Aquarius">Aquarius</option>
+            <option value="Pisces">Pisces</option>
+          </select>
+        </div>
+        <div class="field-group">
+          <label for="moon">Moon Sign</label>
+          <select id="moon">
+            <option value="Aries">Aries</option>
+            <option value="Taurus">Taurus</option>
+            <option value="Gemini">Gemini</option>
+            <option value="Cancer" selected>Cancer</option>
+            <option value="Leo">Leo</option>
+            <option value="Virgo">Virgo</option>
+            <option value="Libra">Libra</option>
+            <option value="Scorpio">Scorpio</option>
+            <option value="Sagittarius">Sagittarius</option>
+            <option value="Capricorn">Capricorn</option>
+            <option value="Aquarius">Aquarius</option>
+            <option value="Pisces">Pisces</option>
+          </select>
+        </div>
+        <div class="field-group">
+          <label for="energy">Desired Vibe</label>
+          <select id="energy">
+            <option value="all">All Vibes</option>
+            <option value="Romance">Romance (Venus)</option>
+            <option value="Career">Career (Mercury)</option>
+            <option value="Rest">Rest (Moon)</option>
+            <option value="Abundance">Abundance (Jupiter)</option>
+            <option value="Purpose">Purpose (Sun)</option>
+            <option value="Spirit">Spirituality</option>
+          </select>
+        </div>
+      </div>
+      <button id="calc-btn" onclick="AstroCarto.calculate()">Reveal My Cosmic Map ✦</button>
+    </section>
+
+    <!-- Map Canvas Window Area -->
+    <main id="map-wrap">
+      <div id="map"></div>
+      
+      <!-- Interactive Map Tooltip Box -->
+      <div id="tooltip" class="astro-tooltip" role="tooltip" aria-hidden="true" style="display: none;">
+        <div id="tt-name" class="tt-title"></div>
+        <div id="tt-vibe" class="tt-vibe-tag"></div>
+        <div id="tt-planet" class="tt-astrologer-note"></div>
+      </div>
+    </main>
+
+    <!-- Bottom Mobile Pill Slider View -->
+    <footer id="strip-wrap" aria-label="Active Cosmic Hotspots Row">
+      <div id="city-strip" role="list"></div>
+    </footer>
+
+  </div>
+
+  <!-- External Map Rendering Dependencies -->
+  <script src="https://cdn.jsdelivr.net/npm/d3@7"></script>
+  <script src="https://cdn.jsdelivr.net/npm/topojson@3"></script>
+  
+  <!-- Primary Application Execution Script -->
+  <script src="app.js"></script>
+</body>
+</html>
